@@ -45,12 +45,18 @@ const ShowAllPosts = () => {
     console.log('title, description, id', title, description, id);
     setAllPosts(allPosts.map(post => {
         if(post.id === id){
-            return {title, description, id}
+            return {...post, title: post.title || title, description: post.description || description, id}
         } else return post
     }))
 
     console.log(allPosts);
     setIsModifyPost(false);
+  }
+
+  const deletePost = id => {
+      console.log(id);
+      const modifiedPosts = allPosts.filter(post => post.id !== id);
+      setAllPosts(modifiedPosts);
   }
 
   if (isCreateNewPost) {
@@ -82,7 +88,7 @@ const ShowAllPosts = () => {
                 (
                     allPosts.map(post => {
                         return (
-                            <Post key={post.id} post={post} editPost={editPost}/>
+                            <Post key={post.id} post={post} editPost={editPost} deletePost={deletePost}/>
                         )
                     })
                 )

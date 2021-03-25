@@ -1,6 +1,6 @@
 import React from "react";
 
-const Post = ({ post, editPost }) => {
+const Post = ({ post, editPost, deletePost }) => {
   return (
     <>
       <section className="container mt-5 border p-4">
@@ -17,7 +17,7 @@ const Post = ({ post, editPost }) => {
         <div className="row">
           <div className="col-12">
           <button className="mr-2" onClick={()=> editPost(post.id)}>Edit</button>
-          <button>Delete</button>
+          <button onClick={()=> deletePost(post.id)}>Delete</button>
           </div>
         </div>
       </section>
